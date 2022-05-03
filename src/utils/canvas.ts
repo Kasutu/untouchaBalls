@@ -3,8 +3,8 @@ import Movement from "../engine/movement.engine";
 const { listen, get } = new Movement();
 
 export default class Canvas {
-  private canvas: HTMLCanvasElement;
-  public ctx: CanvasRenderingContext2D | null;
+  public canvas: HTMLCanvasElement;
+  public ctx: CanvasRenderingContext2D;
 
   private charX: number = 0;
 
@@ -20,7 +20,7 @@ export default class Canvas {
       greninjaImg.onload = (e) => {
           context?.drawImage(greninjaImg, 0, 0);
       }
-      greninjaImg.src = 'greninja.png';
+      greninjaImg.src = '../assets/greninja.png';
   }
 
   private eventHandler = () => {
@@ -38,10 +38,5 @@ export default class Canvas {
       else if (get().left) {
         this.charX += 25;
       };
-
-      
   }
 }
-
-const canvas = new Canvas();
-canvas.redraw()

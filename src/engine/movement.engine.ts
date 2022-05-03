@@ -1,6 +1,6 @@
-import Directions from "../interface/directions.interface";
+import Directions from '../interface/directions.interface';
 
-class Joystick {
+class Movement {
   protected up: boolean = false;
   protected down: boolean = false;
   protected left: boolean = false;
@@ -26,6 +26,8 @@ class Joystick {
       case event.key === 'ArrowRight' || event.keyCode === 68: // right arrow key
         this.right = inputState;
         break;
+      case event.key === 'down' || event.keyCode === 83:
+        this.down = inputState;
     }
   }
 

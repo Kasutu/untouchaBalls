@@ -11,7 +11,7 @@ class Movement {
     addEventListener('keyup', this.inputListener);
   }
 
-  public inputListener(event: KeyboardEvent) {
+  private inputListener(event: KeyboardEvent) {
     let inputState = event.type === 'keydown' ? true : false;
 
     switch (true) {

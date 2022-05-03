@@ -9,7 +9,7 @@ export default class CollisionDetector {
     this.worldWidth = worldWidth;
   }
 
-  detect(player: HitBox, obj: HitBox) {
+  detectCollision(player: HitBox, obj: HitBox): boolean {
     // world bottom border collision
     if (
       player.y + player.height >= this.worldHeight &&
@@ -35,8 +35,12 @@ export default class CollisionDetector {
 
     // obj detection
     if (
-      player.y + player.height > platform.y &&
-      player.oldY + player.height <= platform.oldY
+      (player.y + player.height >= obj.y && obj.y + obj.height >= player.y) ||
+      player.x + player.width >= obj.width
     ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

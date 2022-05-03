@@ -1,46 +1,36 @@
-import Pokemon from "../parentClass/pokemon.parentClass";
-
-interface Coordinate {
-  x: number;
-  y: number;
-}
+import HitBox from '../interface/hitbox.interface';
+import Pokemon from '../parentClass/pokemon.parentClass';
 
 export default class invisibleHitbox {
-  protected coordinates: Coordinate;
+  protected x: number = 0;
+  protected y: number = 0;
   protected height: number;
   protected width: number;
 
-  constructor(coordinates: Coordinate, height: number, width: number) {
-    this.coordinates = coordinates;
+  constructor(height: number, width: number) {
     this.height = height;
     this.width = width;
   }
 
-  setCoordinates() {
-    
+  setCoordinates(x: number, y: number): void {
+    this.x = x;
+    this.y = y;
+  }
+
+  getProps(): HitBox {
+    return {
+      x: this.x,
+      y: this.y,
+      height: this.height,
+      width: this.width,
+    };
   }
 
   private update() {
-    throw "method not implemented";
+    throw 'method not implemented';
   }
 
   private draw() {
-    throw "method not implemented";
-  }
-
-  coordinate(x: number, y: number): void;
-  coordinate(param1: unknown, param2?: unknown): Coordinate {
-    let coord: Coordinate = {
-      x: 0,
-      y: 0,
-    };
-
-    if (typeof param1 === "number") {
-      coord = {
-        x: Number(param1),
-        y: Number(param2),
-      };
-    }
-    return coord;
+    throw 'method not implemented';
   }
 }

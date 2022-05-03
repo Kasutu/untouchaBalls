@@ -35,8 +35,8 @@ export default class CollisionDetector {
 
     // obj detection
     if (
-      (player.y + player.height >= obj.y && obj.y + obj.height >= player.y) ||
-      player.x + player.width >= obj.width
+      (player.y + player.height >= obj.y || obj.y + obj.height >= player.y) ||
+      player.x + player.width >= obj.width || obj.x + obj.width >= player.x
     ) {
       return true;
     } else {

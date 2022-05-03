@@ -1,6 +1,6 @@
 import Directions from '../interface/directions.interface';
 
-class Movement {
+export default class Movement {
   protected up: boolean = false;
   protected down: boolean = false;
   protected left: boolean = false;

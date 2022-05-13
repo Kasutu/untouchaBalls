@@ -5,15 +5,14 @@ export default class GameLoop {
   protected delta: number = 0;
   protected elapsed: number = 0;
 
-  public start(fps: number): void {
+  public init(fps: number): void {
     this.fpsInterval = 1000 / fps;
     this.delta = Date.now();
     this.startTime = this.delta;
-    this.animate();
   }
 
-  public animate(...args: any): void {
-    requestAnimationFrame(this.animate);
+  public startLoop(cb: (...args: any) => void): void {
+    requestAnimationFrame(() => this.startLoop);
 
     this.now = Date.now();
     this.elapsed = this.now - this.delta;
@@ -22,7 +21,8 @@ export default class GameLoop {
       this.delta = this.now - (this.elapsed % this.fpsInterval);
 
       // Update and Render functions
-      args;
+      console.log(this.delta);
+      cb;
     }
   }
 }

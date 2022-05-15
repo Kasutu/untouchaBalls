@@ -15,12 +15,12 @@ export default class Canvas {
         this.context.fillStyle = color;
         this.context.fill();
     }
-    drawImage() {
-        this.context.drawImage(this.img, 0, 0);
+    drawImage(posX, posY, width, height) {
+        this.context.drawImage(this.img, posX, posY, width, height);
     }
-    drawPlayer(posX, posY) {
+    drawPlayer(posX, posY, width, height) {
         this.context.beginPath();
-        this.context.rect(posX, posY, 15, 15);
+        this.context.rect(posX, posY, width, height);
         this.context.fillStyle = 'black';
         this.context.fill();
     }

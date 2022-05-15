@@ -1,7 +1,7 @@
-import HitBox from '../interface/hitbox.interface';
-import Pokemon from '../parentClass/pokemon.parentClass';
+import HitBox from '../../interface/hitbox.interface';
+import Pokemon from '../parent/pokemon.parentClass.js';
 
-export default class invisibleHitbox {
+export default class invisibleHitBox {
   protected x: number = 0;
   protected y: number = 0;
   protected height: number;

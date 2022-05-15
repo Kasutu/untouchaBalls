@@ -1,54 +1,46 @@
-import Canvas from './ux/canvas.ux.js';
-import GameLoop from './utils/gameLoop.js';
-import Movement from './engine/movement.engine.js';
 // untouchaBalls
 // Diadem Grace Arroz, Jerome Cabugwason
 
-const { listen, get } = new Movement();
-const gameLoop = new GameLoop();
-const canvas = new Canvas();
+import Canvas from './ux/canvas.ux.js';
+import GameLoop from './utils/gameLoop.js';
+import Movement from './engine/movement.engine.js';
+import CollisionDetector from './engine/collisionDetector.engine.js';
+import Pokemon from './class/parent/pokemon.parentClass.js';
 
-class Game {
-  private posX: number = 0;
-  private posY: number = 0;
+const { movement } = new Movement();
+const canvas = new Canvas();
+const { detectCollision, setWorldBoundaries } = new CollisionDetector();
+
+export default class App extends GameLoop {
+  private player: Pokemon;
+
+  constructor() {
+    super(60);
+    this.player = new Pokemon('p1', 10, 100, 100, 100, canvas);
+  }
 
   public init() {
     canvas.init(document.getElementById('canvas') as HTMLCanvasElement);
-    // this.update();
-    this.render();
-    // gameLoop.init(60);
+
+    console.log('initialized');
+
+    console.log('looping...');
+    this.paused = false;
+    this.startLoop();
   }
 
-  public update() {
+  update(): void {
+    // console.log('updated');
     // update physics
-    this.eventHandler();
+    movement(this.player);
+
+    // collisions handler
+    setWorldBoundaries(this.player, 500, 500);
   }
 
-  private eventHandler = () => {
-    listen();
-
-    if (get().up) {
-      this.posY -= 25;
-      this.render();
-      console.log('up')
-    } else if (get().down) {
-      this.posY += 25;
-      this.render();
-    } else if (get().right) {
-      this.posX += 25;
-      this.render();
-    } else if (get().left) {
-      this.posX -= 25;
-      this.render();
-    }
-  };
-
-  public render() {
+  render(): void {
+    // console.log('updated');
     // renders the image after update finished calculating
-    canvas.fill('blue');
-    canvas.drawPlayer(this.posX, this.posY);
+    this.player.draw();
   }
 }
-
-const game = new Game();
-game.init();

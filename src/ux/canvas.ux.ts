@@ -18,13 +18,23 @@ export default class Canvas {
     this.context.fill();
   }
 
-  public drawImage(): void {
-    this.context.drawImage(this.img, 0, 0);
+  public drawImage(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number
+  ): void {
+    this.context.drawImage(this.img, posX, posY, width, height);
   }
 
-  public drawPlayer(posX: number, posY: number): void {
+  public drawPlayer(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number
+  ): void {
     this.context.beginPath();
-    this.context.rect(posX, posY, 15, 15);
+    this.context.rect(posX, posY, width, height);
     this.context.fillStyle = 'black';
     this.context.fill();
   }

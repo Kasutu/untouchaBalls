@@ -14,6 +14,6 @@ export default class Pokemon {
     }
     draw() {
         this.ctx.fill('white');
-        this.ctx.drawPlayer(this.x, this.y, this.width, this.height);
+        this.ctx.drawImage(this.x, this.y, this.width, this.height);
     }
 }

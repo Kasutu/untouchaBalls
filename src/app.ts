@@ -16,7 +16,7 @@ export default class App extends GameLoop {
 
   constructor() {
     super(60);
-    this.player = new Pokemon('p1', 10, 100, 15, 15, canvas);
+    this.player = new Pokemon('p1', 10, 100, 100, 100, canvas);
   }
 
   public init() {

@@ -18,8 +18,13 @@ export default class Canvas {
     this.context.fill();
   }
 
-  public drawImage(): void {
-    this.context.drawImage(this.img, 0, 0);
+  public drawImage(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number
+  ): void {
+    this.context.drawImage(this.img, posX, posY, width, height);
   }
 
   public drawPlayer(

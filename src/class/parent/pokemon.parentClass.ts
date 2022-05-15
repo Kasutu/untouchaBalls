@@ -35,6 +35,6 @@ export default class Pokemon implements HitBox {
 
   public draw(): void {
     this.ctx.fill('white');
-    this.ctx.drawPlayer(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.x, this.y, this.width, this.height);
   }
 }

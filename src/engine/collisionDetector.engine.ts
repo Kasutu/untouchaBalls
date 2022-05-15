@@ -11,7 +11,7 @@ export default class CollisionDetector {
     }
 
     // world top border collision
-    if (player.y - player.height < 0 - player.height / 2) {
+    if (player.y - player.height < 0 - player.height) {
       player.y = 0;
     }
 

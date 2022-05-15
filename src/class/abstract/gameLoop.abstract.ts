@@ -6,8 +6,8 @@ export default abstract class GameLoop {
   protected elapsed: number = 0;
   protected paused: boolean = false;
 
-  constructor(fps: number) {
-    this.fpsInterval = 1000 / fps;
+  constructor() {
+    this.fpsInterval = 1000 / 60;
     this.delta = window.Date.now();
     this.startTime = this.delta;
   }

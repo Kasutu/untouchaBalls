@@ -1,11 +1,13 @@
-import HitBox from '../../interface/hitbox.interface';
+import Pokemon from '../abstract/pokemon.abstract.js';
 import Canvas from '../../ux/canvas.ux.js';
 
-export default class Pokemon implements HitBox {
-  private ctx: Canvas;
+const canvas = new Canvas();
+
+export default class Player extends Pokemon {
+  protected ctx: Canvas;
   protected name: string;
-  protected hp: number;
-  protected damage: number;
+  public hp: number;
+  public damage: number;
   public width: number;
   public height: number;
   public x: number;
@@ -16,9 +18,9 @@ export default class Pokemon implements HitBox {
     hp: number,
     damage: number,
     width: number,
-    height: number,
-    canvas: Canvas
+    height: number
   ) {
+    super();
     this.ctx = canvas;
     this.name = name;
     this.hp = hp;
@@ -29,12 +31,11 @@ export default class Pokemon implements HitBox {
     this.y = canvas.height / 2;
   }
 
-  public attack(target: Pokemon) {
-    throw 'method not implemented';
+  public attack(target: Pokemon): void {
+    throw new Error('Method not implemented.');
   }
 
   public draw(): void {
-    this.ctx.fill('white');
-    this.ctx.drawImage(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.x, this.y, this.width, this.height, this.hp);
   }
 }

@@ -20,8 +20,10 @@ export default class CollisionDetector {
     }
     detectCollision(player, obj) {
         // obj detection
-        if ((player.y + player.height >= obj.y && obj.y + obj.height >= player.y) ||
-            player.x + player.width >= obj.width) {
+        if (player.x < obj.x + obj.width &&
+            player.x + player.width > obj.x &&
+            player.y < obj.y + obj.height &&
+            player.y + player.height > obj.y) {
             return true;
         }
         else {

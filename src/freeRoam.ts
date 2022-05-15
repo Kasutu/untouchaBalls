@@ -61,6 +61,7 @@ export default class FreeRoam extends GameLoop {
     this.collided = false;
     this.inBattle = false;
 
+    this.pokemonArr = [];
     this.init();
   };
 

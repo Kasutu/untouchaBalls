@@ -25,6 +25,7 @@ export default class FreeRoam extends GameLoop {
         this.runHandler = () => {
             this.collided = false;
             this.inBattle = false;
+            this.pokemonArr = [];
             this.init();
         };
         this.player = new Player('Greninja', 100, 2, 100, 100);

@@ -53,8 +53,7 @@ export default class FreeRoam extends GameLoop {
   }
 
   private attackHandler = () => {
-    clear();
-    this.paused = false;
+    // add attack mechanics here
   };
 
   private runHandler = () => {

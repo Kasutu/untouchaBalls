@@ -2,12 +2,9 @@ export default class Canvas {
     constructor() {
         this.width = 500;
         this.height = 500;
-        this.fill = (color) => {
+        this.clear = () => {
             // fills the entire canvas
-            this.context.beginPath();
-            this.context.rect(0, 0, this.width, this.height);
-            this.context.fillStyle = color;
-            this.context.fill();
+            this.context.clearRect(0, 0, this.width, this.height);
         };
         this.canvas = document.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
@@ -16,6 +13,10 @@ export default class Canvas {
     }
     drawImage(posX, posY, width, height, hp) {
         this.context.drawImage(this.img, posX, posY, width, height);
+        // data
+        this.context.font = '20px monospace';
+        this.context.fillStyle = 'black';
+        this.context.fillText(`HP: ${hp}`, posX, posY - 20);
     }
     drawBox(posX, posY, width, height) {
         this.context.beginPath();

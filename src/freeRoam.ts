@@ -12,7 +12,7 @@ import Canvas from './ux/canvas.ux.js';
 // Diadem Grace Arroz, Jerome Cabugwason
 
 const { movement } = new Movement();
-const { fill } = new Canvas();
+const { clear } = new Canvas();
 const { detectCollision, setWorldBoundaries } = new CollisionDetector();
 const canvas = new Canvas();
 
@@ -59,6 +59,7 @@ export default class FreeRoam extends GameLoop {
     this.hitBox = new InvisibleHitBox(50, 50);
 
     this.runBtn.addEventListener('click', this.runHandler);
+    this.attackBtn.addEventListener('click', this.attackHandler);
 
     console.log('initialized');
   }
@@ -101,6 +102,11 @@ export default class FreeRoam extends GameLoop {
     this.pokemonArr.push(this.playerInBattle);
   };
 
+  private attackHandler = () => {
+    clear();
+    this.paused = false;
+  };
+
   private runHandler = () => {
     console.log('RUNNN');
     this.collided = false;
@@ -124,7 +130,7 @@ export default class FreeRoam extends GameLoop {
   }
 
   render(): void {
-    fill('white');
+    clear();
     // console.log('updated');
     // renders the image after update finished calculating
 
@@ -132,17 +138,15 @@ export default class FreeRoam extends GameLoop {
       // freeRoam screen
       this.player.draw();
       this.hitBox.draw();
-    } else {
-      fill('white');
+    } else if (this.inBattle) {
       // battle screen
-      for (let pokemon of this.pokemonArr) {
-        pokemon.draw();
-
-        // data
-        canvas.context.font = '20px monospace';
-        canvas.context.fillStyle = 'black';
-        canvas.context.fillText(`HP: ${pokemon.hp}`, pokemon.x, pokemon.y - 20);
+      for (let i = 0; i < this.pokemonArr.length; i++) {
+        this.pokemonArr[i].draw();
       }
+
+      this.paused = true;
+    } else {
+      this.init();
     }
   }
 }

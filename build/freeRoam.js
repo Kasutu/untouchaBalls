@@ -9,7 +9,7 @@ import Canvas from './ux/canvas.ux.js';
 // untouchaBalls
 // Diadem Grace Arroz, Jerome Cabugwason
 const { movement } = new Movement();
-const { fill } = new Canvas();
+const { clear } = new Canvas();
 const { detectCollision, setWorldBoundaries } = new CollisionDetector();
 const canvas = new Canvas();
 export default class FreeRoam extends GameLoop {
@@ -87,7 +87,7 @@ export default class FreeRoam extends GameLoop {
         console.log(!this.inBattle && !this.collided);
     }
     render() {
-        fill('white');
+        clear();
         // console.log('updated');
         // renders the image after update finished calculating
         if (!this.inBattle && !this.collided) {
@@ -96,14 +96,9 @@ export default class FreeRoam extends GameLoop {
             this.hitBox.draw();
         }
         else {
-            fill('white');
             // battle screen
-            for (let pokemon of this.pokemonArr) {
-                pokemon.draw();
-                // data
-                canvas.context.font = '20px monospace';
-                canvas.context.fillStyle = 'black';
-                canvas.context.fillText(`HP: ${pokemon.hp}`, pokemon.x, pokemon.y - 20);
+            for (let i = 0; i < this.pokemonArr.length; i++) {
+                this.pokemonArr[i].draw();
             }
         }
     }

@@ -12,12 +12,9 @@ export default class Canvas {
     this.img.src = '../assets/greninja.png';
   }
 
-  public fill = (color: string): void => {
+  public clear = (): void => {
     // fills the entire canvas
-    this.context.beginPath();
-    this.context.rect(0, 0, this.width, this.height);
-    this.context.fillStyle = color;
-    this.context.fill();
+    this.context.clearRect(0, 0, this.width, this.height);
   };
 
   public drawImage(
@@ -28,6 +25,12 @@ export default class Canvas {
     hp: number
   ): void {
     this.context.drawImage(this.img, posX, posY, width, height);
+
+    // data
+    this.context.font = '20px monospace';
+    this.context.fillStyle = 'black';
+    this.context.clearRect(posX, posY - 20, width, 20);
+    this.context.fillText(`HP: ${hp}`, posX, posY - 20);
   }
 
   public drawBox(

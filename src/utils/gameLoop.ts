@@ -1,19 +1,18 @@
-export default class GameLoop {
-  protected fpsInterval: number = 0;
+export default abstract class GameLoop {
+  protected readonly fpsInterval: number = 0;
   protected startTime: number = 0;
   protected now: number = 0;
   protected delta: number = 0;
   protected elapsed: number = 0;
+  protected paused: boolean = false;
 
-  public init(fps: number): void {
+  constructor(fps: number) {
     this.fpsInterval = 1000 / fps;
-    this.delta = Date.now();
+    this.delta = window.Date.now();
     this.startTime = this.delta;
   }
 
-  public startLoop(cb: (...args: any) => void): void {
-    requestAnimationFrame(() => this.startLoop);
-
+  public startLoop = () => {
     this.now = Date.now();
     this.elapsed = this.now - this.delta;
 
@@ -21,8 +20,15 @@ export default class GameLoop {
       this.delta = this.now - (this.elapsed % this.fpsInterval);
 
       // Update and Render functions
-      console.log(this.delta);
-      cb;
+      this.update(this.delta);
+      this.render();
     }
-  }
+
+    if (!this.paused) {
+      requestAnimationFrame(this.startLoop);
+    }
+  };
+
+  protected abstract update(delta: number): void;
+  protected abstract render(): void;
 }

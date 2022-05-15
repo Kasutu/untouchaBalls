@@ -18,9 +18,9 @@ export default class Canvas {
     drawImage() {
         this.context.drawImage(this.img, 0, 0);
     }
-    drawPlayer(posX, posY) {
+    drawPlayer(posX, posY, width, height) {
         this.context.beginPath();
-        this.context.rect(posX, posY, 15, 15);
+        this.context.rect(posX, posY, width, height);
         this.context.fillStyle = 'black';
         this.context.fill();
     }

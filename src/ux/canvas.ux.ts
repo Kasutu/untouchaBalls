@@ -22,9 +22,14 @@ export default class Canvas {
     this.context.drawImage(this.img, 0, 0);
   }
 
-  public drawPlayer(posX: number, posY: number): void {
+  public drawPlayer(
+    posX: number,
+    posY: number,
+    width: number,
+    height: number
+  ): void {
     this.context.beginPath();
-    this.context.rect(posX, posY, 15, 15);
+    this.context.rect(posX, posY, width, height);
     this.context.fillStyle = 'black';
     this.context.fill();
   }

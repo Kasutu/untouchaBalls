@@ -16,6 +16,7 @@ export default class Canvas {
         // data
         this.context.font = '20px monospace';
         this.context.fillStyle = 'black';
+        this.context.clearRect(posX, posY - 20, width, 20);
         this.context.fillText(`HP: ${hp}`, posX, posY - 20);
     }
     drawBox(posX, posY, width, height) {

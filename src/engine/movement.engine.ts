@@ -1,5 +1,6 @@
-import Pokemon from '../class/parent/pokemon.parentClass.js';
+import PokemonAbstract from '../class/abstract/pokemon.abstract';
 
+type Pokemon = PokemonAbstract;
 export default class Movement {
   private up: boolean;
   private down: boolean;
@@ -41,25 +42,25 @@ export default class Movement {
     // movement and position behavior calculation
     // up
     if (this.up) {
-      console.log('up');
+      // console.log('up');
       player.y -= 5;
     }
 
     // down
     if (this.down) {
-      console.log('down');
+      // console.log('down');
       player.y += 5;
     }
 
     // left
     if (this.left) {
-      console.log('left');
+      // console.log('left');
       player.x -= 5;
     }
 
     // right
     if (this.right) {
-      console.log('right');
+      // console.log('right');
       player.x += 5;
     }
   };

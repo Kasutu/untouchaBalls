@@ -1,6 +1,7 @@
-import App from './app.js';
+import FreeRoam from './freeRoam.js';
 
-const app = new App();
+const freeRoam = new FreeRoam();
+
 window.onload = () => {
-  app.init();
+  freeRoam.init();
 };
